@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-source /home/lisimian/wss/wss-estimation/benchmark_scripts/bench_bmc.sh
+source /home/wss/wss-estimation/benchmark_scripts/bench_bmc.sh
 
 JAVA="java"
 JAR="./target/working-set-size-estimation-1.0-SNAPSHOT-jar-with-dependencies.jar"
@@ -9,7 +9,7 @@ CLASS_NAME="alluxio.client.file.cache.benchmark.BenchmarkMain"
 BENCHMARK="accuracy"
 DATASET="ycsb" # optional: msr, twitter, ycsb, random, sequential
 SHADOW_CACHE="bmc" # optional: ccf, mbf, bmc
-TRACE="/home/lisimian/datasets/ycsb/ycsb-1m-10m-1m-concat6.csv" # path to dataset
+TRACE="/home/datasets/ycsb/ycsb-1m-10m-1m-concat6.csv" # path to dataset
 MAX_ENTRIES=10000000 # 12m
 WINDOW_SIZE=262144 # 256k
 NUM_UNIQUE_ENTRIES=262144 # used for random & sequential benchmark
