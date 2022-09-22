@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+a.dropdown-item.active {
+    color: white;
+}
+
+.version {
+    line-height: 23px;
+    vertical-align: middle;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    color: #777;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sticky-top {
+    padding-top: 1rem;
+}
+
+.language-bash > .highlight > .highlight > code > span.line::before {
+    content: "$";
+    font-style: inherit;
+    margin-right: .7rem;
+}
+
+div.highlighter-rouge {
+    margin-bottom: 1rem;
+}
+
+div.highlighter-rouge > div.highlight {
+    background-color: #DCDCDC;
+    padding-top:0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+div.highlight > pre.highlight {
+    margin-bottom: 0rem;
+}
+
+.navbar {
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.nav-tab-margin {
+    margin-bottom: 1rem;
+}
+
+body #content {
+    line-height: 1.6;
+    /* Inspired by Github's wiki style */
+}
+
+.container {
+    max-width: 1200px;
+}
+
+
+body {
+    padding-bottom: 40px;
+}
+
+#toc {
+    display: none;
+}
+#toc + ul {
+    display: none;
+}
+
+@media (min-width: 1350px) {
+    #toc + ul {
+        position: fixed;
+        margin-left: -200px;
+        max-width: 200px;
+        list-style: none;
+        display: block;
+    }
+    #toc + ul a {
+        text-decoration: none;
+        color: #2f2f2f;
+    }
+    #toc + ul li a {
+        padding: 0 5px;
+    }
+    #toc.on + ul li.active>a {
+        background-color: #DCDCDC;
+        display: block;
+        border-left: 2px solid #2f2f2f;
+    }
+    #toc + ul>li>ul {
+        list-style: none;
+    }
+    #toc.on + ul>li>ul {
+        display: none;
+    }
+    #toc + ul>li.list>ul {
+        display: block;
+    }
+}
+
+div.accordion {
+    margin-bottom: 1rem;
+}

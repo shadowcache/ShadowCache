@@ -1,0 +1,58 @@
+alluxio.user.block.master.client.threads:
+  数据块master client与数据块master通信使用的线程数目。
+alluxio.user.block.remote.read.buffer.size.bytes:
+  从远程Alluxio worker读取数据时的缓冲区大小。它决定了一个Alluxio client和一个Alluxio worker之间Thrift connections的最大数量
+alluxio.user.block.size.bytes.default:
+  Alluxio文件的默认大小。
+alluxio.user.block.worker.client.pool.gc.threshold:
+  数据块worker client如果闲置超过这个时间会被关闭。
+alluxio.user.block.worker.client.read.retry:
+  客户端放弃读某个块之前最大重试worker个数。
+alluxio.user.date.format.pattern:
+  以指定的日期格式，在Cli命令和Web页面中显示日期。
+alluxio.user.file.buffer.bytes:
+  在文件系统中进行读写操作时使用的缓冲区大小。
+alluxio.user.file.delete.unchecked:
+  在尝试以递归方式删除持久化目录之前，检查底层文件系统中的内容是否与Alluxio同步。
+alluxio.user.file.master.client.threads:
+  文件master client与文件master通信时使用的线程数目。
+alluxio.user.file.metadata.load.type:
+  从UFS中加载元数据的行为。当访问关于路径的信息，但该路径在Alluxio中不存在时，元数据能够从UFS中加载。合法的选项有`Always`，`Never`，`Once`。`Always`将总是访问UFS来看路径是否存在于UFS中。`Never`表示从来不会访问UFS。`Once`表示在”首次“的时候会访问UFS（根据缓存），但是以后都不会在访问。默认值为`Once`。
+alluxio.user.file.metadata.sync.interval:
+  在调用路径上的操作之前同步UFS元数据的时间间隔。-1表示不会发生同步。0意味着在操作之前，代理总是会同步路径的元数据。如果指定了一个时间间隔，就可以在该时间间隔内(尽可能)不重新同步路径。同步路径的元数据必须与UFS交互，所以这是一个昂贵的操作。如果对一个操作执行同步，则配置为“alluxio.user.file.metadata.load”将被忽略。
+alluxio.user.file.passive.cache.enabled:
+  当从Alluxio远程worker读文件时，是否缓存文件到Alluxio的本地worker。当从UFS读文件时，是否缓存到本地worker与这个选项无关。
+alluxio.user.file.readtype.default:
+  创建Alluxio文件时的默认读类型。可选值为`CACHE_PROMOTE` (如果数据已经在Alluxio存储内，将其移动到最高存储层，如果数据需要从底层存储进行读取，将其写到本地Alluxio的最高存储层)、`CACHE` (如果数据需要从底层存储进行读取，将其写到本地Alluxio的最高存储层), `NO_CACHE` (数据不与Alluxio交互，如果是从Alluxio中进行读取，将不会发生数据块迁移或者剔除)。
+alluxio.user.file.waitcompleted.poll:
+  当使用waitCompleted机制时，查询文件完成状态的时间间隔。
+alluxio.user.file.worker.client.threads:
+  文件worker client从worker读取数据时使用的线程数目。
+alluxio.user.block.write.location.policy.class:
+  选择worker进行写文件数据块时的默认定位机制。
+alluxio.user.file.write.tier.default:
+  数据块写入的默认存储层。可选值为整型数值。非负值代表从高层到底层的存储层（0代表第一层存储层，１代表第二层存储层，以此类推）。如果给定值大于存储层数量,这个数字代表最底层的存储层。负值代表从底层到高层的存储层（-1代表最底层存储层，-2代表次底层存储层，以此类推）如果给定值的绝对值大于存储层数量，这个数字代表最高层存储层。
+alluxio.user.file.writetype.default:
+  创建Alluxio文件时的默认写类型。可选值为`MUST_CACHE` (数据仅仅存储在Alluxio中，并且必须存储在其中),
+  `CACHE_THROUGH` (尽量缓冲数据，同时同步写入到底层文件系统), `THROUGH` (不缓冲数据，同步写入到底层文件系统), `ASYNC_THROUGH` (数据写入Alluxio, 异步写入底层文件系统, 配置alluxio.user.file.replication.durable, 在数据持久化之前在Alluxio中复制alluxio.user.file.replication.durable个副本)。
+alluxio.user.hostname:
+  给alluxio客户端使用的主机名。
+alluxio.user.network.netty.channel:
+  netty网络通道类型。
+alluxio.user.network.netty.worker.threads:
+  远程数据块worker client从远程数据块worker读取数据使用的线程数目。
+alluxio.user.rpc.retry.base.sleep:
+  在遇到一些错误的时候，Alluxio客户端的RPC会基于指数级的延迟进行重试。这个配置决定了这个指数级重试的基数。
+alluxio.user.rpc.retry.max.duration:
+  在遇到一些错误的时候，Alluxio客户端的RPC会基于指数级的延迟进行重试。这个配置决定了放弃前重试的最大时延。
+alluxio.user.rpc.retry.max.sleep:
+  在遇到一些错误的时候，Alluxio客户端的RPC会基于指数级的延迟进行重试。这个配置决定了这个重试延迟的最大值。
+alluxio.user.short.circuit.enabled:
+  是否允许用户绕过Alluxio读取数据。
+alluxio.user.ufs.block.read.concurrency.max:
+  一个Block Worker上的一个UFS块并发访问的最大个数。
+alluxio.user.ufs.block.read.location.policy:
+  当Alluxio client从UFS读取文件时，它将读取委托给Alluxio worker。client使用此策略来选择要阅读哪个worker。
+  内置选择有：[<a href="https://www.alluxio.org/javadoc/master/alluxio/client/block/policy/DeterministicHashPolicy.html">alluxio.client.block.policy.DeterministicHashPolicy</a>, <a href="https://www.alluxio.org/javadoc/master/alluxio/client/file/policy/LocalFirstAvoidEvictionPolicy.html">alluxio.client.block.policy.LocalFirstAvoidEvictionPolicy</a>, <a href="https://www.alluxio.org/javadoc/master/alluxio/client/file/policy/LocalFirstPolicy.html">alluxio.client.block.policy.LocalFirstPolicy</a>, <a href="https://www.alluxio.org/javadoc/master/alluxio/client/file/policy/MostAvailableFirstPolicy.html">alluxio.client.block.policy.MostAvailableFirstPolicy</a>, <a href="https://www.alluxio.org/javadoc/master/alluxio/client/file/policy/RoundRobinPolicy.html">alluxio.client.block.policy.RoundRobinPolicy</a>, <a href="https://www.alluxio.org/javadoc/master/alluxio/client/file/policy/SpecificHostPolicy.html">alluxio.client.block.policy.SpecificHostPolicy</a>]
+alluxio.user.ufs.block.read.location.policy.deterministic.hash.shards:
+  当alluxio.user.ufs.block.read.location.policy设为alluxio.client.block.policy.DeterministicHashPolicy，这设定了hash shards的数量。
