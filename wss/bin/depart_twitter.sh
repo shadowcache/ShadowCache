@@ -1,1 +1,0 @@
-head -300000000 /home/lisimian/datasets/twitter/cluster13.0  |  awk -F "," ' $1<172800{print $0}' > /home/lisimian/datasets/twitter/cluster13.0-2d.csv
