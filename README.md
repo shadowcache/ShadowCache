@@ -1,4 +1,6 @@
 # ShadowCache
+ShadowCache is a an adaptive and lightweight approach to improve cache efficiency 
+This is the repository for ShadowCache's implementation based on Alluxio.
 This article will guide you run ShadowCache with presto to accelearte data access to under file systems.
 
 ## Code Organization of This Project
@@ -16,20 +18,23 @@ This article will guide you run ShadowCache with presto to accelearte data acces
 - Git
 
 ## Compile
-To compile alluxio, use command:
+To compile alluxio with ShadowCache, use command:
 
 ```shell
+cd ShadowCache-on-Alluxio
 mvn clean install -Dmaven.javadoc.skip=true -DskipTests -Dlicense.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -Prelease
 ```
 
 To compile presto, use command:
 
 ```shell
- ./mvnw clean install -T2C -DskipTests -Dlicense.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -pl '!presto-docs'
+cd presto
+./mvnw clean install -T2C -DskipTests -Dlicense.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -pl '!presto-docs'
 ```
 
 To compile only the approximate data structure Cuki, use command:
 ```shell
+cd Cuki
 mvn assembly:assembly \
   -T 4C \
   -Dmaven.javadoc.skip=true \
