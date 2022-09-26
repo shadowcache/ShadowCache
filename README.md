@@ -4,7 +4,8 @@ This is the repository for ShadowCache's implementation based on Alluxio.
 This article will guide you run ShadowCache with presto to accelearte data access to under file systems.
 
 ## Code Organization of This Project
-- ShadowCache-on-Alluxio: the cache system including ShadowCache.
+- alluxio: the cache system including ShadowCache.
+- presto: we make few changes in presto, so we can config ShadowCache by Presto's configuration file.
 - conf: the presto config files.
 - scripts: some bash shells for experiment
 - sqls: tpc-ds queries
@@ -21,7 +22,7 @@ This article will guide you run ShadowCache with presto to accelearte data acces
 To compile alluxio with ShadowCache, use command:
 
 ```shell
-cd ShadowCache-on-Alluxio
+cd alluxio
 mvn clean install -Dmaven.javadoc.skip=true -DskipTests -Dlicense.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -Prelease
 ```
 
@@ -46,7 +47,7 @@ mvn assembly:assembly \
 
 ## Config
 
-Conifg your presto cluster just as common, but replace the `hive.properties` with the `conf/hive.properties`. There are serveral parameters in this file, and these are the most important of ShadowCache:
+Conifg your presto cluster just as common, but replace the `hive.properties` with the `conf/hive.properties`. There are serveral parameters in this file, we list some important parameters as follow:
 
 | parameters                           | meanings                                                     |
 | ------------------------------------ | ------------------------------------------------------------ |
@@ -120,6 +121,6 @@ The parameters about above command are list as follows ( `ccf` reprents  Cuki, C
 | scope_bits          | bits length used for scope                                   |
 | scope_bits          | bits length used for scope                                   |
 
-For furture comparing with other methods, we also prepare some bash files in `cuki/benchmark_scripts`.
+For further comparing with other methods, we also prepare some bash files in `cuki/benchmark_scripts`.
 
 We provide our YCSB trace ( in `cuki/datasets_tiny/` )for simple benchmarks. You can download the MSR trace in http://iotta.snia.org/traces/block-io/388, and the Twitter trace in  https://github.com/twitter/cache-trace.
